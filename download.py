@@ -99,7 +99,7 @@ def download_kaggle(url, output):
 
 
 def main(args):
-    if args.use_proxy:
+    if args.use_proxy or args.proxy != '127.0.0.1:7890':
         os.environ['HTTP_PROXY'] = args.proxy
         os.environ['HTTPS_PROXY'] = args.proxy
     if args.where == 'kaggle':
