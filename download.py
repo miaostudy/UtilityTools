@@ -19,9 +19,12 @@ def safe_remove(path, force=False):
         items_to_delete.append(path)
 
     print("\nThe following content will be deleted soon:")
+    items_to_delete.sort()
+    item_number = 0
     for item in items_to_delete:
-        print(f"  - {item}")
-    print(f"totally: {len(items_to_delete)}")
+        if os.path.isfile(item):
+            print(f"  - {item}")
+    print(f"totally: {item_number}")
 
     if not force:
         while True:
