@@ -2,6 +2,7 @@ import os
 import argparse
 import time
 from pathlib import Path
+
 def safe_remove(path, force=False):
     import shutil
     if not path or not os.path.exists(path):
@@ -23,10 +24,11 @@ def safe_remove(path, force=False):
     item_number = 0
     for item in items_to_delete:
         if os.path.isfile(item):
+            item_number = item_number + 1
             print(f"  - {item}")
-    print(f"totally: {item_number}")
+    print(f"totally file: {item_number}")
 
-    if not force:
+    if not force and item_number != 0:
         while True:
             confirm = input("\ndelete? (y/n): ").strip().lower()
             if confirm in ['y', 'yes']:
